@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../logic/model/diary_entry.dart'; // Import your DiaryEntry model
 import '../database/diary_service.dart'; // Import your DiaryService
+import 'package:final_collab/lib/controller/ai_controller.dart';
 
 class WriteDiaryScreen extends StatefulWidget {
   const WriteDiaryScreen({super.key});
@@ -28,6 +29,45 @@ class _WriteDiaryScreenState extends State<WriteDiaryScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Diary entry saved!')),
         );
+
+        // Send content to GROQ API for emotional analysis
+        final AIController aiController = AIController(
+          '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',
+          "meta-llama/llama-4-scout-17b-16e-instruct",
+        );
+        final analysisResult = await aiController.sendMessage(
+          "Analyze the emotion of this text: $content",
+        );
+
+        String message;
+        if (analysisResult.contains('negative')) {
+          message = await aiController.sendMessage(
+            "Suggest relaxing activities for someone feeling negative emotions."
+          );
+        } else {
+          message = await aiController.sendMessage(
+            "Give a compliment or uplifting message for someone feeling positive emotions."
+          );
+        }
+
+        // Show the message in a dialog
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Emotion Analysis Result'),
+              content: Text(message),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+
+        
         Navigator.of(context).pop(true); // Go back to the diary screen
       } catch (error) {
         // Handle any errors during saving
