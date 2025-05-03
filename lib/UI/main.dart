@@ -3,6 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:zenzone2/UI/diary_screen.dart';
 import 'package:zenzone2/UI/drawing_screen.dart';
 import 'ai_chat.dart';
+import 'launchPage.dart';
 import 'login.dart';
 
 Future<void> main() async {
@@ -19,7 +20,10 @@ class ReliefMoodApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
       routes: {
+        '/': (context) => SplashScreen(), // ✅ STARTS HERE
+        '/login': (context) => FingerprintLoginScreen(),
         '/home': (context) => ReliefMoodHome(),
         //'/gift': (context) => GiftScreen(),
         //'/target': (context) => TargetScreen(),
@@ -29,7 +33,6 @@ class ReliefMoodApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Relief ',
       theme: ThemeData(fontFamily: 'Arial'),
-      home: FingerprintLoginScreen(),
     );
   }
 }
