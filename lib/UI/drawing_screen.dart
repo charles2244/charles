@@ -424,7 +424,7 @@ class _DrawingScreenState extends State<DrawingScreen> {
                                                     fit: BoxFit.cover,
                                                   ),
                                                   Image.asset(
-                                                    'assets/bunny.png',
+                                                    'assets/happyBunny.gif',
                                                     height: 100,
                                                     width: 100,
                                                     fit: BoxFit.cover,

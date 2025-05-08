@@ -326,7 +326,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Image.asset(
-                                                  'assets/bunny.png',
+                                                  'assets/happyBunny.gif',
                                                   height: 100,
                                                   width: 100,
                                                   fit: BoxFit.cover,
@@ -352,7 +352,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                         const SizedBox(height: 20),
                                       ],
                                     ),
-                                  ),
+                                   ),
                                 );
                               });
                         } catch (error) {
