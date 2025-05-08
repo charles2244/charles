@@ -51,6 +51,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   supabase_flutter: ^2.8.4
+  flutter_launcher_icons: ^0.14.3
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -59,6 +60,12 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
+flutter_icons:
+  image_path: "assets/logo.png"
+  android: true
+  ios: true
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/1024.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -88,6 +95,8 @@ flutter:
       - assets/bunnyBackgroundImg.png
       - assets/wrongBunny.png
       - assets/happyBunny.gif
+      - assets/logo.png
+      - assets/1024.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
@@ -99,6 +108,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: Italianno
+      fonts:
+        - asset: assets/fonts/Italianno-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
